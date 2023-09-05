@@ -7,7 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TambahBarangController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,5 +53,13 @@ Route::get('/', function () {
             Route::get("/barang/{id}/edit", [BarangController::class, "edit"])->name("barang.edit");
             Route::put("/barang/{id}", [BarangController::class, "update"])->name("barang.update");
             Route::resource('barang',\App\Http\Controllers\BarangController::class);
+            Route::get("tambahsupplier", [SupplierController::class, "create"])->name("tambahsupplier.create");
+            Route::post("tambahsupplier", [SupplierController::class, "store"])->name("tambahsupplier.store");
+            Route::delete("/supplier/{id}/delete", [SupplierController::class, "delete"])->name("supplier.delete");
+            // Route::delete('/supplier/{id}', 'SupplierController@delete')->name('barang.delete');
+            Route::get("/supplier/{id}/edit", [SupplierController::class, "edit"])->name("supplier.edit");
+            Route::put("/supplier/{id}", [SupplierController::class, "update"])->name("supplier.update");
+
+
         });
     });

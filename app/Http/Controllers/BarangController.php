@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Barang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\TambahBarangController;
+
 
 class BarangController extends Controller
 {

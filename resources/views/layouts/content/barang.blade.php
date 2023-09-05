@@ -44,7 +44,7 @@
                 <td class="w-40 border-b">
                     <div class="flex items-center sm:justify-center text-theme-9"> <i data-feather="check-square" class="w-4 h-4 mr-2"></i> Active </div>
                 </td>
-
+                {{-- gambar --}}
                 <td class="text-center border-b">
                     <div class="flex sm:justify-center">
                         <div class="intro-x w-10 h-10 image-fit">
@@ -60,6 +60,7 @@
                 </td>
 
 
+                {{-- action --}}
                 <td class="border-b w-5">
                     <div class="flex sm:justify-center items-center">
                         <form action="{{ route('dashboard.barang.edit', $barang->id) }}" method="GET">
@@ -80,9 +81,9 @@
                             </button>
                         
                         </form>
-
                     </div>
                 </td>
+                {{-- selesai action --}}
             </tr>
             @endforeach
         </tbody>

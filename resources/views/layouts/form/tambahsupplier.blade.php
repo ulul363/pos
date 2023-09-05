@@ -1,11 +1,11 @@
 @extends('layouts.dashboard.app')
 @section('content')
-    <form method="POST" action="{{ route('dashboard.tambahbarang.store') }}"enctype="multipart/form-data"> @csrf
-        <div class="intro-y box p-5">
-            {{-- nama barang --}}
+    <form method="POST" action="{{ route('dashboard.tambahsupplier.store') }}"enctype="multipart/form-data"> @csrf
+        <div class="mt-3">
+            {{-- nama supplier --}}
             <div>
-                <label>Nama Barang</label>
-                <input type="text" name="nama_barang" class="input w-full border mt-2" placeholder="Input text">
+                <label>Nama supplier</label>
+                <input type="text" name="nama_supplier" class="input w-full border mt-2" placeholder="">
             </div>
 
             {{-- kategori --}}
@@ -23,33 +23,24 @@
 
             {{-- jumlah --}}
             <div class="mt-3">
-                <label>Stok</label>
-                <div class="relative mt-2">
-                    <input type="text" name="stok" class="input pr-12 w-full border col-span-4" placeholder="Price">
-                    <div
-                        class="absolute top-0 right-0 rounded-r w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">
-                        pcs</div>
+                <label>Alamat</label>
+                <div class=" relative mt-2">
+                <div class="flex flex-col sm:flex-row items-center">
+                    <input type="text" name="alamat" class="input w-full border mt-2" placeholder="">
+                    </div>
                 </div>
             </div>
 
-
-            {{-- <div class="mt-3">
-        <label>Weight</label>
-        <div class="relative mt-2">
-            <input type="text" class="input pr-16 w-full border col-span-4" placeholder="Price">
-            <div class="absolute top-0 right-0 rounded-r w-16 h-full flex items-center justify-center bg-gray-100 border text-gray-600">grams</div>
-        </div>
-    </div> --}}
-            <div class="mt-3">
-                <label>Harga</label>
+            <div class="mt-3 ">
+                <label>No Telepon</label>
                 <div class="sm:grid grid-cols-3 gap-2">
                     <div class="relative mt-2">
-                        <div
+                        {{-- <div
                             class="absolute top-0 left-0 rounded-l w-12 h-full flex items-center justify-center bg-gray-100 border text-gray-600">
-                            Unit</div>
-                        <div class="pl-3">
-                            <input type="text" name="harga" class="input pl-12 w-full border col-span-4"
-                                placeholder="Price">
+                            Unit</div> --}}
+                        <div class="flex flex-col sm:flex-row items-center">
+                            <input type="text" name="no_telp" class="input w-full border mt-2"
+                                placeholder="">
                         </div>
                     </div>
                     {{-- <div class="relative mt-2">

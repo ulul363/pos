@@ -54,7 +54,7 @@
                     {{-- <div class="col-span-12 sm:col-span-4 xxl:col-span-3 box p-5 cursor-pointer zoom-in"> --}}
                     @foreach ($barangs as $barang)
                         <a href="javascript:;" data-toggle="modal" data-target="#add-item-modal"
-                            data-nama-barang="{{ $barang->nama_barang }}" data-stok="{{ $barang->stok }}"
+                            data-nama-barang="{{ $barang->nama_barang }}" data-stok="{{ $barang->harga }}"
                             class="col-span-12 sm:col-span-4 xxl:col-span-3 box p-5 cursor-pointer zoom-in">
                             <div class="font-medium text-base">{{ $barang->nama_barang }}</div>
                             <div class="text-gray-600">Rp.{{ $barang->harga }},00</div>
@@ -291,11 +291,38 @@
                             <button type="button" data-dismiss="modal" class="button w-32 border text-gray-700 mr-1">Cancel</button>
                             <button type="button" class="button w-32 bg-theme-1 text-white">Create Ticket</button>
                         </div>
+                        <div class="modal" id="add-item-modal">
+                            <div class="modal__content">
+                                <div class="flex items-center px-5 py-5 sm:py-3 border-b border-gray-200">
+                                    <h2 class="font-medium text-base mr-auto" id="item-name">{{ $barang->nama_barang }}</h2>
+                                </div>
+                                <div class="p-5 grid grid-cols-12 gap-4 row-gap-3">
+                                    <div class="col-span-12">
+                                        <label>Quantity</label>
+                                        <div class="flex mt-2 flex-1">
+                                            <button type="button" class="button w-12 border bg-gray-200 text-gray-600 mr-1">-</button>
+                                            <input type="text" class="input w-full border text-center" placeholder="Item quantity"
+                                                value="2">
+                                            <button type="button" class="button w-12 border bg-gray-200 text-gray-600 ml-1">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-12">
+                                        <label>Notes</label>
+                                        <textarea class="input w-full border mt-2 flex-1" placeholder="Item notes"></textarea>
+                                    </div>
+                                </div>
+                                <div class="px-5 py-3 text-right border-t border-gray-200">
+                                    <button type="button" data-dismiss="modal"
+                                        class="button w-24 border text-gray-700 mr-1">Cancel</button>
+                                    <button type="button" class="button w-24 bg-theme-1 text-white">Add Item</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- END: New Order Modal -->
                 <!-- BEGIN: Add Item Modal -->
-                <div class="modal" id="add-item-modal">
+                {{-- <div class="modal" id="add-item-modal">
                     <div class="modal__content">
                         <div class="flex items-center px-5 py-5 sm:py-3 border-b border-gray-200">
                             <h2 class="font-medium text-base mr-auto">
@@ -321,37 +348,11 @@
                             <button type="button" class="button w-24 bg-theme-1 text-white">Add Item</button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- END: Add Item Modal -->
         <!-- END: New Order Modal -->
         <!-- BEGIN: Add Item Modal -->
-        <div class="modal" id="add-item-modal">
-            <div class="modal__content">
-                <div class="flex items-center px-5 py-5 sm:py-3 border-b border-gray-200">
-                    <h2 class="font-medium text-base mr-auto" id="item-name">{{ $barang->nama_barang }}</h2>
-                </div>
-                <div class="p-5 grid grid-cols-12 gap-4 row-gap-3">
-                    <div class="col-span-12">
-                        <label>Quantity</label>
-                        <div class="flex mt-2 flex-1">
-                            <button type="button" class="button w-12 border bg-gray-200 text-gray-600 mr-1">-</button>
-                            <input type="text" class="input w-full border text-center" placeholder="Item quantity"
-                                value="2">
-                            <button type="button" class="button w-12 border bg-gray-200 text-gray-600 ml-1">+</button>
-                        </div>
-                    </div>
-                    <div class="col-span-12">
-                        <label>Notes</label>
-                        <textarea class="input w-full border mt-2 flex-1" placeholder="Item notes"></textarea>
-                    </div>
-                </div>
-                <div class="px-5 py-3 text-right border-t border-gray-200">
-                    <button type="button" data-dismiss="modal"
-                        class="button w-24 border text-gray-700 mr-1">Cancel</button>
-                    <button type="button" class="button w-24 bg-theme-1 text-white">Add Item</button>
-                </div>
-            </div>
-        </div>
+        
         <!-- END: Add Item Modal -->
     </div>
 

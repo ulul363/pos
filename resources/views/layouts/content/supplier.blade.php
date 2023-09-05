@@ -9,7 +9,7 @@
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-no-wrap items-center mt-2">
-            <button class="button text-white bg-theme-1 shadow-md mr-2">Add New Product</button>
+            <a href="{{ route('dashboard.tambahsupplier.create') }}" class="button text-white bg-theme-1 shadow-md mr-2" >Add New Supplier</a>
             <div class="dropdown relative">
                 <button class="dropdown-toggle button px-2 box text-gray-700">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-feather="plus"></i> </span>
@@ -43,28 +43,47 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($suppliers as $supplier)
+                    
                     <tr class="intro-x">
                         <td>
-                            <a href="" class="font-medium whitespace-no-wrap">Sony A7 III</a>
+                            <a href="" class="font-medium whitespace-no-wrap">{{$supplier->nama_supplier }}</a>
                         </td>
-                        <td class="text-center">0895340452388</td>
+                        <td class="text-center">{{$supplier->no_telp}}</td>
                         <td class="font-medium text-center whitespace-no-wrap">
-                            Tembalang  
+                            {{$supplier->alamat }} 
                         </td>
                         <td class="w-40">
                             <div class="flex items-center justify-center text-theme-6"> <i data-feather="check-square" class="w-4 h-4 mr-2"></i> Inactive </div>
                         </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                <a class="flex items-center mr-3" href="javascript:;"> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
-                                <a class="flex items-center text-theme-6" href="javascript:;" data-toggle="modal" data-target="#delete-confirmation-modal"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
+                                <form action="{{ route('dashboard.supplier.edit', $supplier->id) }}" method="GET">
+                                    <button class="button px-2 mr-1 mb-2 bg-theme-1 text-white" type="submit">
+                                        <span class="w-5 h-5 flex items-center justify-center"> <i data-feather="edit" class="w-4 h-4"></i> </span>
+                                    </button>
+                                {{-- <a class="delete-supplier" href="{{ route('dashboard.supplier.delete', $supplier->id) }}">
+                                <i data-feather="trash-2" class="w-4 h-4 mr-1"></i>Delete 
+                                </a> --}}
+                            </form>
+                                <form action="{{ route('dashboard.supplier.delete', $supplier->id) }}" method="POST">
+                                    
+                                    @csrf
+                                    @method('delete')
+                                    
+                                    <button class="button px-2 mr-1 mb-2 bg-theme-6 text-white" type="submit">
+                                        <span class="w-5 h-5 flex items-center justify-center"> <i data-feather="trash" class="w-4 h-4"></i> </span>
+                                    </button>
+                                
+                                </form>
                             </div>
                         </td>
                     </tr>
-
+                    @endforeach
                 </tbody>
             </table>
         </div>
+            
         <!-- END: Data List -->
         <!-- BEGIN: Pagination -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-no-wrap items-center">
@@ -97,6 +116,7 @@
             </select>
 
         </div>
+        
         <!-- END: Pagination -->
 
     </div>
@@ -114,7 +134,7 @@
             </div>
         </div>
     </div>
-
+    
     <!-- END: Delete Confirmation Modal -->
     <div class="hidden p-1 mt-3 md:block mx-auto text-gray-600">Showing 1 to 10 of 150 entries</div>
 </div>
